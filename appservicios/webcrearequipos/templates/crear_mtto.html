@@ -1,0 +1,277 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>ACwire</title>
+        <link rel="icon" type="image/x-icon" href="{% static './img/img_index/favicon.ico' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static './css/styles_index.css' %}" rel="stylesheet" />
+        <script src="{% static './js/scripts_index.js' %}"></script>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top">ACWire</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">Inicio</a></li>
+                        
+                       
+                        
+                        
+                        
+                        
+                        {% if username %}
+
+                        <li class="nav-item"><a class="nav-link" href="#projects">Gestione</a></li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'crear_equipos' %}">
+                            {{ username }}
+                          </a>
+                        </li>
+
+                      
+
+                        <li class="nav-item">
+                            <a  type="submit" class="nav-link" href="{% url 'cerrar_sesion' %}">Cerrar seccion</a>
+
+                            
+
+                        </li>
+
+                     
+                      {% endif %}
+                            
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h1 class="mx-auto my-0 text-uppercase">ACWire</h1>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5">Una nueva forma de gestionar sus mantenimentos</h2>
+                       
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- About-->
+        <section class="about-section text-center" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-4">Que es ACWire</h2>
+                        <p class="text-white-50">
+                            Somos la aplicacion de gestion de mantenimiento de sistemas de aires acondionados
+                            mas completa del mercado, con nosotros podra gestionar sus mantenimientos de forma
+                            rapida y sencilla, ademas de poder llevar un control de sus equipos y sus clientes.
+                        </p>
+                    </div>
+                </div>
+                <img class="img-fluid" src="{% static './img/img_index/ipad.png' %}" alt="..." />
+            </div>
+        </section>
+        <!-- Projects-->
+        <section class="projects-section bg-light" id="projects">
+     
+
+
+
+            <div class="container px-4 px-lg-5">
+                <!-- Featured Project Row-->
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    
+
+                    <div Class="col-xl-4 col-lg-5 py-4">ASIGNAR MANTENIMIENTO</div> 
+
+
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/guardar_mmto/{{equipo.id}}" method="post"> {% csrf_token %}
+                                
+
+                                    
+                                    <div class="frome-group">
+                                    <label for="nombre">Nombre del Equipo</label>
+                                    <input type="text" value="{{equipo.nombre}}"    name="nombre" class="form-control" id="nombre" placeholder="equipo" required>
+                                    </div>
+
+                                    <div class="frome-group">
+                                    <label for="modelo">Modelo del equipo</label>
+                                    <input type="text" value="{{equipo.modelo}}" name="modelo" class="form-control" id="modelo" placeholder="Modelo del equipo" required>
+                                    </div>
+                                    
+                                    
+                                    <div class="frome-group">
+                                    <label for="serial">Serial del equipo</label>
+                                    <input type="text" value="{{equipo.serial}}" name="serial" class="form-control" id="serial" placeholder="Serial del equipo" required>
+                                    </div>    
+
+
+
+                                    <div class="frome-group">
+                                    <label for="voltaje">Voltaje del equipo</label>
+                                    <input type="text" value="{{equipo.voltaje}}"  name="voltaje" class="form-control" id="voltaje" placeholder="Voltaje" required>
+                                    </div>
+
+
+                                    <div class="frome-group">
+                                    <label for="corriente_compresor">Corriente de compresor</label>
+                                    <input type="text" value="{{equipo.corriente_compresor}}" name="corriente_compresor" class="form-control" id="corriente_compresor" placeholder="Corriente de compresor" required>
+                                    </div>    
+
+
+                                    <div class="frome-group">
+                                    <label for="corriente_motor">Corriente de motor</label>
+                                    <input type="text" value="{{equipo.corriente_motor}}" name="corriente_motor" class="form-control" id="corriente_motor" placeholder="Corriente de motor" required>
+                                    </div>
+
+                                    <div class="frome-group">
+                                    <label for="estado">Estado del equipo</label>
+                                    <input type="text" value="" name="estado" class="form-control" id="estado" placeholder="Estado" required>
+                                    </div>
+
+                                    <div    class="frome-group">
+                                    <label for="observacion">Observacion</label>
+                                    <input type="text" value="" name="observacion" class="form-control" id="observacion" placeholder="Observacion" required>
+
+                                    
+                                    
+                                    
+                                    <div class="frome-group">
+                                        <label for="Supervisores">Supervisor</label>
+                                        <select name="Supervisores" class="form-control" id="Supervisores" required>
+                                               <option value="pepito">nada</option>
+                                            {% for f in Supervisores %}
+                                                <option value="{{f.SupervisorID}}">{{ f.PersonaID.PrimerNombre }} - ID: {{ f.SupervisorID }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                    <div class="frome-group">
+                                        <label for="Tecnicos">Tecnico asignado</label>
+                                        <select name="Tecnicos" class="form-control" id="Tecnicos" required>
+                                               <option value="perex">nada</option>
+                                            {% for h in Tecnicos %}
+                                                <option value="{{h.TecnicoID}}">{{ h.PersonaID.PrimerNombre }} - ID: {{ h.TecnicoID}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+
+                                    <div class="frome-group py-4">
+                                        <button type="submit" class="btn btn-dark btn-block"> Grabar mantenimiento </button>                                        
+                                    </div>
+
+
+
+                                
+                                
+                            </form>
+                            
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+            </div>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </section>
+        <!-- Signup-->
+
+        <!-- Contact-->
+        <section class="contact-section bg-black">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Direccion</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">Calle 42 C Nro 81-35 (Medellin,Antioquia)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Email</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50"><a href="#!">aires@energiayamaniobra.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">PBX</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">4440776</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                    <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static './js/scripts_index.js' %}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
