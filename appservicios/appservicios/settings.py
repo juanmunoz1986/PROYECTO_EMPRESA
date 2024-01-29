@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=u()(3qdgl%l1nigz$=-qn8itg@j19etiig9la0xror*bnzh6t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.medellinintegral.com','18.188.116.128', 'localhost']
+ALLOWED_HOSTS = ['medellinintegral.com', 'www.medellinintegral.com', '18.188.116.128', 'localhost']
 
 
 # Application definition
